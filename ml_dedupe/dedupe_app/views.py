@@ -237,7 +237,13 @@ def readData(filename):
 	print 'Reading Data...'
 	print filename
 	data_d = {}
-	with open(filename) as f:
+	try:
+		open('tmp_dir2/input.csv')
+		print 'success...'
+	except:
+		print 'error'
+		pass
+	with open('input.csv') as f:
 		print f
 		print '1...'
 		reader = csv.DictReader(f)
