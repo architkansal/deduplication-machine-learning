@@ -5,24 +5,30 @@
 	<body>
 		  <form action="/dedupe_app/received" method="post">
 		  	<div class="addme">
-		  	<select name="attr">
-				  {%for c in data%}
-		  		<option>
-		  			{{c}}
-		  		</option>
-				  {%endfor%}
-		  	</select>
-		  	<select name="comp">
-		  		<option value="Default" id="0">
-		  			Default
-		  		</option>
-		  		<option value="Exact" id="1">
-		  			Exact
-		  		</option>
-		  		<option value="String" id="2">
-		  			String
-		  		</option>  		
-		  	</select>
+		  	{% for x in total %}
+			  	<select class="attr{{x}}" name="attr{{x}}">
+					  {%for c in data%}
+			  		<option>
+			  			{{c}}
+			  		</option>
+					  {%endfor%}
+			  	</select>
+			  	<select class="comp{{x}}" name="comp{{x}}">
+			  		<option value="None" id="-1">
+			  		<option value="Default" id="0">
+			  			Default
+			  		</option>
+			  		<option value="Exact" id="1">
+			  			Exact
+			  		</option>
+			  		<option value="String" id="2">
+			  			String
+			  		</option>  		
+			  	</select>
+			  	<br>
+			  	<br>
+			{%endfor%}
+			<button onclick="func()">Add More</button>
 		  	<button type="submit">Submit</button>
 		  	{% csrf_token %}
 		</form>
