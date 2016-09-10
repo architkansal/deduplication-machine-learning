@@ -34,6 +34,12 @@ data['Phone']='String'
 uploaded_filename=''
 full_filename=''
 
+uncertain_pairs = {}
+labels = {'distinct' : [], 'match' : []}
+
+deduper = None
+record_pair = None
+
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
@@ -88,6 +94,9 @@ def m(request):
 # 	execfile(B_P);
 # 	return 1;
 
+
+
+
 def do_dedupe(request):
 	optp = optparse.OptionParser()
 	optp.add_option('-v', '--verbose', dest='verbose', action='count',
@@ -110,7 +119,7 @@ def do_dedupe(request):
 
 	print('importing data ...')
 	data_d = readData(input_file)
-
+	global deduper
 	# If a settings file already exists, we'll just load that and skip training
 	if os.path.exists(settings_file):
 		print('reading from', settings_file)
@@ -291,9 +300,7 @@ def got_it(request):
 
 
 
-uncertain_pairs = {}
-labels = {}
-
+record_pair = {}
 
 
 def console_own(deduper,request):
@@ -313,7 +320,7 @@ def console_own(deduper,request):
 	labels = {'distinct' : [], 'match' : []}
 
 	send_user={}
-
+	global record_pair
 	for record_pair in uncertain_pairs:
 		label = ''
 		labeled = False
@@ -329,10 +336,35 @@ def console_own(deduper,request):
 
 
 
-def unique(seq) :
+def unique(seq):
     seen = set()
     seen_add = seen.add
-    return [x for x in seq if not (x in seen or seen_add(x))]\
+    return [x for x in seq if not (x in seen or seen_add(x))]
+
+
 
 def assign_label(request):
 	print request.POST
+	uncertain_pairs = deduper.uncertainPairs()
+	# return  HttpResponse(request.POST['data'])
+	label=request.POST['data']
+	if label == 'y' :
+		labels['match'].append(record_pair)
+		labeled = True
+	elif label == 'n' :
+		labels['distinct'].append(record_pair)
+		labeled = True
+	elif label == 'f':
+		# print('Finished labeling', file=sys.stderr)
+		finished = True
+	elif label != 'u':
+		# print('Nonvalid response', file=sys.stderr)
+		raise
+	print labels
+	print label
+	if labeled:
+		deduper.markPairs(labels)
+
+	
+	return HttpResponse("Done...")
+	       

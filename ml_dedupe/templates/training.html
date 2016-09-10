@@ -1,3 +1,5 @@
+{% include "header.html" %}
+{% load static %}
 <!DOCTYPE html>
 <html >
   <head>
@@ -35,44 +37,84 @@
   
             {%endfor%}
 </div>
-<script>
-var mytable = "<table cellpadding=\"0\" cellspacing=\"0\">";
-mytable +="<thead><tr><th>Fields</th><th>Record A</th><th>Record B</th></tr></thead>";
-mytable +="<tbody><tr>";
-for (var i = 1; i < 13; i++) {
-  if (i % 3 == 1 && i != 1) {
-    mytable += "</tr><tr>";
-  }
-  mytable += "<td>[" + i + "]</td>";
-}
-
-mytable += "</tr></tbody></table>";
-
-document.write(mytable);
-</script>
 <br>
-<button type="submit" onclick="xyz(this)" >Yes</button>
-<button type="submit">No</button>
-<button type="submit">Unsure</button>
+<button type="submit"  class="yes" >Yes</button>
+<button type="submit" class="no">No</button>
+<button type="submit" class="unsure">Unsure</button>
 <br> <br>
+<div class="xcz"></div>
 <div class="table-title">
 <h5 align="left">Current Responses</h5>
 </div>
 <br>
-<script>
-function xyz(x)
-{
+
+
+<script type="text/javascript">
+$(".yes").click(function(e){
   $.ajax({
-      url="/dedupe_app/assign_label",
-      type="POST",
-      data={'y':1},
+      url:"/dedupe_app/assign_label",
+      type:"POST",
+      data:{'data':'y', csrfmiddlewaretoken:'{{ csrf_token }}'},
+
       success:function(data)
       {
-        $(".").html(data);
+        $(".xcz").html(data);
       }
   });
-}
+});
 
+</script>
+
+<script type="text/javascript">
+$(".no").click(function(e){
+  $.ajax({
+      url:"/dedupe_app/assign_label",
+      type:"POST",
+      data:{'data':'n', csrfmiddlewaretoken:'{{ csrf_token }}'},
+
+      success:function(data)
+      {
+        $(".xcz").html(data);
+      }
+  });
+});
+
+</script>
+
+<script type="text/javascript">
+$(".unsure").click(function(e){
+  $.ajax({
+      url:"/dedupe_app/assign_label",
+      type:"POST",
+      data:{'data':'u', csrfmiddlewaretoken:'{{ csrf_token }}'},
+
+      success:function(data)
+      {
+        $(".xcz").html(data);
+      }
+  });
+});
+
+</script>
+
+<script type="text/javascript">
+$(".finish").click(function(e){
+  $.ajax({
+      url:"/dedupe_app/assign_label",
+      type:"POST",
+      data:{'data':'f', csrfmiddlewaretoken:'{{ csrf_token }}'},
+
+      success:function(data)
+      {
+        $(".xcz").html(data);
+      }
+  });
+});
+
+</script>
+
+
+<script type="text/javascript">
 var mytable1 = "<table cellpadding=\"0\" cellspacing=\"0\">";
 mytable1 +="<thead><tr><th>Positive</th><th>Negative</th><th>Unsure</th></tr></thead>";
 mytable1 +="<tbody><tr>";
@@ -87,7 +129,7 @@ mytable1 += "</tr></tbody></table>";
 
 document.write(mytable1);
 </script>
-
+<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
 
 </body>
 </html>
