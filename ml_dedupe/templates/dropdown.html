@@ -4,7 +4,7 @@
 	</head>
 	<body>
 		  <form action="/dedupe_app/received" method="post">
-		  	<div class="addme">
+		  	<div class="xyz">
 		  	{% for x in total %}
 			  	<select class="attr{{x}}" name="attr{{x}}">
 					  {%for c in data%}
@@ -31,6 +31,9 @@
 			<button onclick="func()">Add More</button>
 		  	<button type="submit">Submit</button>
 		  	{% csrf_token %}
+		  </div>
 		</form>
 	</body>
 </html>
+<script type="text/javascript">
+</script>
