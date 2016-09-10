@@ -3,29 +3,28 @@
 	<head>
 	</head>
 	<body>
-		  <form action="/dedupe_app/received" method="post">
-		  	<div class="addme">
-		  	<select>
+		  <form action="/dedupe_app/received" method="POST">
+		  	<input name="xyz" type="text" id="x" value="abc"></input>
+		  	<select name="attr">
 		  		{%for c in data%}
-		  		<option>
+		  		<option id="{{c}}"value="{{c}}">
 		  			{{c}}
 		  		</option>
 		  		{%endfor%}
 		  	</select>
-		  	<select>
-		  		<option id="0">
+		  	<select name="comp">
+		  		<option value="Default" id="0">
 		  			Default
 		  		</option>
-		  		<option id="1">
+		  		<option value="Exact" id="1">
 		  			Exact
 		  		</option>
-		  		<option id="2">
+		  		<option value="String" id="2">
 		  			String
 		  		</option>  		
 		  	</select>
-
-		  	<button onclick="add_me()">Add me</button>
 		  	<button type="submit">Submit</button>
+		  	{% csrf_token %}
 		</form>
 	</body>
 </html>

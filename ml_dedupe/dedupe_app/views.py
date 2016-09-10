@@ -58,3 +58,6 @@ def m(request):
 		html = "<html><body>NOT SAVED</body></html>"
 		return HttpResponse(html)
 
+def got_it(request):
+	html = "<html><body>NOT SAVED</body></html>"
+	return HttpResponse(html)
