@@ -147,7 +147,8 @@ def do_dedupe():
 	# press 'f' when you are finished
 		print('starting active labeling...')
 
-		dedupe.consoleLabel(deduper)
+		console_own(deduper)
+
 
 	# Using the examples we just labeled, train the deduper and learn
 	# blocking predicates
@@ -287,6 +288,43 @@ def got_it(request):
 	html = "<html><body>NOT SAVED</body></html>"
 	return HttpResponse(html)
 
+
+
+uncertain_pairs = {}
+labels = {}
+
+
+
+def console_own(deduper):
+	print 'here...'
+	finished = False
+	fields = unique(field.field
+					for field
+					in deduper.data_model.primary_fields)
+
+	print 'here...'
+	while not finished :
+		n_match, n_distinct = (len(deduper.training_pairs['match']),
+								len(deduper.training_pairs['distinct']))
+
+		uncertain_pairs = deduper.uncertainPairs() 
+
+		labels = {'distinct' : [], 'match' : []}
+
+		send_user={}
+
+		for record_pair in uncertain_pairs:
+			label = ''
+			labeled = False
+
+			for pair in record_pair:
+				for field in fields:
+					send_user[field]=pair[field]
+
+		send_user['positive']=n_match
+		send_user['negative']=n_distinct
+
+	return render(request,'training.html', { 'data':send_user })
 
 
 
