@@ -41,6 +41,10 @@
 <button type="submit"  class="yes" >Yes</button>
 <button type="submit" class="no">No</button>
 <button type="submit" class="unsure">Unsure</button>
+<form action="/dedupe_app/cluster_data" method="POST">
+  {% csrf_token %}
+  <button type="submit" class="finish">Finish</button>
+</form>
 <br> <br>
 <div class="xcz"></div>
 <div class="table-title">
@@ -97,21 +101,6 @@ $(".unsure").click(function(e){
 
 </script>
 
-<script type="text/javascript">
-$(".finish").click(function(e){
-  $.ajax({
-      url:"/dedupe_app/console_own_iter",
-      type:"POST",
-      data:{'data':'f', csrfmiddlewaretoken:'{{ csrf_token }}'},
-
-      success:function(data)
-      {
-        $(".xcz").html(data);
-      }
-  });
-});
-
-</script>
 
 
 <script type="text/javascript">

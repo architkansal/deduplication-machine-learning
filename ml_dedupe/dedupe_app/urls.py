@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^dedupe_app/m',views.m, name='m'),
     url(r'^dedupe_app/received',views.got_it),
     url(r'^dedupe_app/console_own_iter',views.console_own_iter),
+    url(r'^dedupe_app/cluster_data',views.cluster_data),
+    
 ]

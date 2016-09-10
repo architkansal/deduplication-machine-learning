@@ -36,7 +36,19 @@ full_filename=''
 
 uncertain_pairs = {}
 labels = {'distinct' : [], 'match' : []}
+fields = []
+flgg=1
+yc=0
+nc=0
+uc=0
 
+input_file = 'tmp_dir2/input.csv'
+output_file = 'tmp_dir2/output.csv'
+settings_file = 'tmp_dir2/learned_settings'
+training_file = 'tmp_dir2/training.json'
+
+
+data_d = None
 deduper = None
 record_pair = None
 
@@ -118,6 +130,7 @@ def do_dedupe(request):
 	training_file = 'csv_example_training.json'
 
 	print('importing data ...')
+	global data_d
 	data_d = readData(input_file)
 	global deduper
 	# If a settings file already exists, we'll just load that and skip training
@@ -128,6 +141,7 @@ def do_dedupe(request):
 	else:    # ## Training
 
 	# Define the fields dedupe will pay attention to
+		# global fields
 		fields=[]
 		for key,val in data.iteritems():
 			fields += [
@@ -160,19 +174,23 @@ def do_dedupe(request):
 		return s_usr
 
 
+def cluster_data(request):
 	# Using the examples we just labeled, train the deduper and learn
 	# blocking predicates
-		deduper.train()
+	print 'hitting....................'
+	global data_d
+	global deduper
+	deduper.train()
 
 	# When finished, save our training to disk
-		with open(training_file, 'w') as tf:
-			deduper.writeTraining(tf)
+	with open(training_file, 'w') as tf:
+		deduper.writeTraining(tf)
 
 	# Save our weights and predicates to disk.  If the settings file
 	# exists, we will skip all the training and learning next time we run
 	# this file.
-		with open(settings_file, 'wb') as sf:
-			deduper.writeSettings(sf)
+	with open(settings_file, 'wb') as sf:
+		deduper.writeSettings(sf)
 
 	# Find the threshold that will maximize a weighted average of our
 	# precision and recall.  When we set the recall weight to 2, we are
@@ -242,6 +260,8 @@ def do_dedupe(request):
 				for key in canonical_keys:
 					row.append(None)
 			writer.writerow(row)
+	return HttpResponse("<h1>BC</h1>")
+
 
 
 def preProcess(column):
@@ -306,6 +326,7 @@ record_pair = {}
 def console_own(deduper,request):
 	# print 'yep...'
 	finished = False
+	global fields
 	fields = unique(field.field
 					for field
 					in deduper.data_model.primary_fields)
@@ -331,7 +352,8 @@ def console_own(deduper,request):
 
 	send_user['positive']=n_match
 	send_user['negative']=n_distinct
-	print send_user
+	print("{0}/10 positive, {1}/10 negative".format(n_match, n_distinct))
+	# print send_user
 	return send_user
 
 
@@ -371,20 +393,23 @@ def assign_label(request):
 
 def console_own_iter(request):
 	# print 'yep...'
-	
-	# uncertain_pairs = deduper.uncertainPairs()
+	global yc,nc
+	uncertain_pairs = deduper.uncertainPairs()
 	# return  HttpResponse(request.POST['data'])
 	label=request.POST['data']
 	if label == 'y' :
+		yc+=1
 		labels['match'].append(record_pair)
 		labeled = True
 	elif label == 'n' :
+		nc+=1
 		labels['distinct'].append(record_pair)
 		labeled = True
 	elif label == 'f':
 		# print('Finished labeling', file=sys.stderr)
 		finished = True
 	elif label != 'u':
+		uc+=1
 		# print('Nonvalid response', file=sys.stderr)
 		raise
 	print labels
@@ -394,9 +419,15 @@ def console_own_iter(request):
 
 	# return HttpResponse("OK...")
 	finished = False
-	fields = unique(field.field
-					for field
-					in deduper.data_model.primary_fields)
+	global flgg
+	global fields
+	if flgg==1:
+		fields=[]
+		fields = unique(field.field
+						for field
+						in deduper.data_model.primary_fields)
+		flgg=0
+
 
 	n_match, n_distinct = (len(deduper.training_pairs['match']),
 							len(deduper.training_pairs['distinct']))
@@ -415,8 +446,10 @@ def console_own_iter(request):
 			for field in fields:
 				send_user[field]=pair[field]
 
-	send_user['positive']=n_match
-	send_user['negative']=n_distinct
-	print send_user
+	send_user['positive']=yc
+	send_user['negative']=nc
+	print str(yc)
+	print str(nc)
+	# print send_user
 	return HttpResponse(send_user)
 
