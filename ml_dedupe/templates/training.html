@@ -52,7 +52,7 @@
 <script type="text/javascript">
 $(".yes").click(function(e){
   $.ajax({
-      url:"/dedupe_app/assign_label",
+      url:"/dedupe_app/console_own_iter",
       type:"POST",
       data:{'data':'y', csrfmiddlewaretoken:'{{ csrf_token }}'},
 
@@ -68,7 +68,7 @@ $(".yes").click(function(e){
 <script type="text/javascript">
 $(".no").click(function(e){
   $.ajax({
-      url:"/dedupe_app/assign_label",
+      url:"/dedupe_app/console_own_iter",
       type:"POST",
       data:{'data':'n', csrfmiddlewaretoken:'{{ csrf_token }}'},
 
@@ -84,7 +84,7 @@ $(".no").click(function(e){
 <script type="text/javascript">
 $(".unsure").click(function(e){
   $.ajax({
-      url:"/dedupe_app/assign_label",
+      url:"/dedupe_app/console_own_iter",
       type:"POST",
       data:{'data':'u', csrfmiddlewaretoken:'{{ csrf_token }}'},
 
@@ -100,7 +100,7 @@ $(".unsure").click(function(e){
 <script type="text/javascript">
 $(".finish").click(function(e){
   $.ajax({
-      url:"/dedupe_app/assign_label",
+      url:"/dedupe_app/console_own_iter",
       type:"POST",
       data:{'data':'f', csrfmiddlewaretoken:'{{ csrf_token }}'},
 

@@ -343,6 +343,8 @@ def unique(seq):
 
 
 
+
+
 def assign_label(request):
 	print request.POST
 	uncertain_pairs = deduper.uncertainPairs()
@@ -364,7 +366,57 @@ def assign_label(request):
 	print label
 	if labeled:
 		deduper.markPairs(labels)
-
-	
 	return HttpResponse("Done...")
 	       
+
+def console_own_iter(request):
+	# print 'yep...'
+	
+	# uncertain_pairs = deduper.uncertainPairs()
+	# return  HttpResponse(request.POST['data'])
+	label=request.POST['data']
+	if label == 'y' :
+		labels['match'].append(record_pair)
+		labeled = True
+	elif label == 'n' :
+		labels['distinct'].append(record_pair)
+		labeled = True
+	elif label == 'f':
+		# print('Finished labeling', file=sys.stderr)
+		finished = True
+	elif label != 'u':
+		# print('Nonvalid response', file=sys.stderr)
+		raise
+	print labels
+	print label
+	if labeled:
+		deduper.markPairs(labels)
+
+	# return HttpResponse("OK...")
+	finished = False
+	fields = unique(field.field
+					for field
+					in deduper.data_model.primary_fields)
+
+	n_match, n_distinct = (len(deduper.training_pairs['match']),
+							len(deduper.training_pairs['distinct']))
+
+	uncertain_pairs = deduper.uncertainPairs() 
+
+	# labels = {'distinct' : [], 'match' : []}
+
+	send_user={}
+	global record_pair
+	for record_pair in uncertain_pairs:
+		label = ''
+		labeled = False
+
+		for pair in record_pair:
+			for field in fields:
+				send_user[field]=pair[field]
+
+	send_user['positive']=n_match
+	send_user['negative']=n_distinct
+	print send_user
+	return HttpResponse(send_user)
+

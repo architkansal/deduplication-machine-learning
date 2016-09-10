@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^/get_data',views.get_data, name='index'),
     url(r'^dedupe_app/m',views.m, name='m'),
     url(r'^dedupe_app/received',views.got_it),
-    url(r'^dedupe_app/assign_label',views.assign_label),
+    url(r'^dedupe_app/console_own_iter',views.console_own_iter),
 ]
