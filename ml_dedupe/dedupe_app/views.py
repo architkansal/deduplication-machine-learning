@@ -22,7 +22,13 @@ import optparse
 import dedupe
 from unidecode import unidecode
 
-	
+
+
+data = {}
+data['site name'] = 'String'
+data['Address']='String'
+data['Zip']='Exact'
+data['Phone']='String'
 
 uploaded_filename=''
 full_filename=''
@@ -102,13 +108,11 @@ def do_dedupe():
 	    # ## Training
 
 	    # Define the fields dedupe will pay attention to
-	    fields = [
-	        {'field' : 'Site name', 'type': 'String'},
-	        {'field' : 'Address', 'type': 'String'},
-	        {'field' : 'Zip', 'type': 'Exact', 'has missing' : True},
-	        {'field' : 'Phone', 'type': 'String', 'has missing' : True},
-	        ]
-
+	    for k,v in data.iteritems():
+		    fields = [
+		        {'field' : k, 'type': v },
+		        ]
+		print fields
 	    # Create a new deduper object and pass our data model to it.
 	    deduper = dedupe.Dedupe(fields)
 
@@ -218,7 +222,7 @@ def do_dedupe():
 
 
 def preProcess(column):
-	print 'preprocessing...'
+	# print 'preprocessing...'
 	try : # python 2/3 string differences
 		column = column.decode('utf8')
 	except AttributeError:
@@ -230,29 +234,29 @@ def preProcess(column):
 	# If data is missing, indicate that by setting the value to `None`
 	if not column:
 		column = None
-	print 'preprocessed...'
+	# print 'preprocessed...'
 	return column
 
 def readData(filename):
-	print 'Reading Data...'
+	# print 'Reading Data...'
 	print filename
 	data_d = {}
-	try:
-		open('tmp_dir2/input.csv')
-		print 'success...'
-	except:
-		print 'error'
-		pass
-	with open('input.csv') as f:
+	# try:
+	# 	open('tmp_dir2/input.csv')
+	# 	print 'success...'
+	# except:
+	# 	print 'error'
+	# 	pass
+	with open('tmp_dir2/input.csv') as f:
 		print f
-		print '1...'
+		# print '1...'
 		reader = csv.DictReader(f)
 		for row in reader:
-			print '2...'
+			# print '2...'
 			clean_row = [(k, preProcess(v)) for (k, v) in row.items()]
 			row_id = int(row['Id'])
 			data_d[row_id] = dict(clean_row)
-		print 'Reading Successful...'
+		# print 'Reading Successful...'
 	return data_d
 
 
