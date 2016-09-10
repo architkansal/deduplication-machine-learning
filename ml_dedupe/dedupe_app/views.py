@@ -68,17 +68,17 @@ def m(request):
 	fout = open(full_filename, 'wb+')
 	file_content = ContentFile( request.FILES['csv_file'].read() )
 
-	try:
+	# try:
 	# Iterate through the chunks.
-		for chunk in file_content.chunks():
-			fout.write(chunk)
-		fout.close()
-		do_dedupe()
-		html = "<html><body>SAVED</body></html>"
-		return HttpResponse(html)
-	except:
-		html = "<html><body>NOT SAVED</body></html>"
-		return HttpResponse(html)
+	for chunk in file_content.chunks():
+		fout.write(chunk)
+	fout.close()
+	s_ur = do_dedupe(request)
+	html = "<html><body>SAVED</body></html>"
+	return render(request,'training.html',{'data':s_ur})
+	# except:
+	# 	html = "<html><body>NOT SAVED</body></html>"
+	# 	return HttpResponse(html)
 
 
 
@@ -88,7 +88,7 @@ def m(request):
 # 	execfile(B_P);
 # 	return 1;
 
-def do_dedupe():
+def do_dedupe(request):
 	optp = optparse.OptionParser()
 	optp.add_option('-v', '--verbose', dest='verbose', action='count',
 					help='Increase verbosity (specify multiple times for more)'
@@ -146,8 +146,9 @@ def do_dedupe():
 	# use 'y', 'n' and 'u' keys to flag duplicates
 	# press 'f' when you are finished
 		print('starting active labeling...')
-
-		console_own(deduper)
+		# return render(request,'training.html')
+		s_usr = console_own(deduper,request)
+		return s_usr
 
 
 	# Using the examples we just labeled, train the deduper and learn
@@ -295,37 +296,40 @@ labels = {}
 
 
 
-def console_own(deduper):
-	print 'here...'
+def console_own(deduper,request):
+	# print 'yep...'
 	finished = False
 	fields = unique(field.field
 					for field
 					in deduper.data_model.primary_fields)
 
-	print 'here...'
-	while not finished :
-		n_match, n_distinct = (len(deduper.training_pairs['match']),
-								len(deduper.training_pairs['distinct']))
+	# print 'here...'
+	# while not finished :
+	n_match, n_distinct = (len(deduper.training_pairs['match']),
+							len(deduper.training_pairs['distinct']))
 
-		uncertain_pairs = deduper.uncertainPairs() 
+	uncertain_pairs = deduper.uncertainPairs() 
 
-		labels = {'distinct' : [], 'match' : []}
+	labels = {'distinct' : [], 'match' : []}
 
-		send_user={}
+	send_user={}
 
-		for record_pair in uncertain_pairs:
-			label = ''
-			labeled = False
+	for record_pair in uncertain_pairs:
+		label = ''
+		labeled = False
 
-			for pair in record_pair:
-				for field in fields:
-					send_user[field]=pair[field]
+		for pair in record_pair:
+			for field in fields:
+				send_user[field]=pair[field]
 
-		send_user['positive']=n_match
-		send_user['negative']=n_distinct
-
-	return render(request,'training.html', { 'data':send_user })
-
-
+	send_user['positive']=n_match
+	send_user['negative']=n_distinct
+	print send_user
+	return send_user
 
 
+
+def unique(seq) :
+    seen = set()
+    seen_add = seen.add
+    return [x for x in seq if not (x in seen or seen_add(x))]
