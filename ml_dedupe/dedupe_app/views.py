@@ -22,7 +22,10 @@ def home(request):
 	return render(request,'home.html')
 
 def attrib(request):
-	return render(request,'dropdown.html')
+	data=[]
+	for x in range(0,5):
+		data.append(x)
+	return render(request,'dropdown.html',{'data':data})
 
 def get_data(request):
 	return render(request, 'home.html', RequestContext(request, locals())) 
