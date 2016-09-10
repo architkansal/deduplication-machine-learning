@@ -332,4 +332,7 @@ def console_own(deduper,request):
 def unique(seq) :
     seen = set()
     seen_add = seen.add
-    return [x for x in seq if not (x in seen or seen_add(x))]
+    return [x for x in seq if not (x in seen or seen_add(x))]\
+
+def assign_label(request):
+	print request.POST
