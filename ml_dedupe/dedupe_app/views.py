@@ -75,5 +75,4 @@ def got_it(request):
 	html = "<html><body>NOT SAVED</body></html>"
 	return HttpResponse(html)
 
-def d():
-	html="<selc"
+# def d():
