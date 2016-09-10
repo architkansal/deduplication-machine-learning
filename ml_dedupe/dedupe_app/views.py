@@ -26,7 +26,7 @@ from unidecode import unidecode
 
 
 data = {}
-data['site name'] = 'String'
+data['Site name'] = 'String'
 data['Address']='String'
 data['Zip']='Exact'
 data['Phone']='String'
@@ -117,11 +117,12 @@ def do_dedupe():
 		with open(settings_file, 'rb') as f:
 			deduper = dedupe.StaticDedupe(f)
 	else:    # ## Training
-		print 'doing...'
+
 	# Define the fields dedupe will pay attention to
-		for k,v in data.iteritems():
-			fields = [
-				{'field' : k, 'type': v },
+		fields=[]
+		for key,val in data.iteritems():
+			fields += [
+				{'field' : key, 'type': val },
 				]
 		print fields
 	# Create a new deduper object and pass our data model to it.
