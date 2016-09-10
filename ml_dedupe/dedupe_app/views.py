@@ -129,10 +129,10 @@ def do_dedupe():
 	    # If we have training data saved from a previous run of dedupe,
 	    # look for it and load it in.
 	    # __Note:__ if you want to train from scratch, delete the training_file
-	    if os.path.exists(training_file):
-	        print('reading labeled examples from ', training_file)
-	        with open(training_file, 'rb') as f:
-	            deduper.readTraining(f)
+		if os.path.exists(training_file):
+			print('reading labeled examples from ', training_file)
+			with open(training_file, 'rb') as f:
+			    deduper.readTraining(f)
 
 	    # ## Active learning
 	    # Dedupe will find the next pair of records
@@ -140,27 +140,27 @@ def do_dedupe():
 	    # or not.
 	    # use 'y', 'n' and 'u' keys to flag duplicates
 	    # press 'f' when you are finished
-	    print('starting active labeling...')
+		print('starting active labeling...')
 
-	    dedupe.consoleLabel(deduper)
+		dedupe.consoleLabel(deduper)
 
-	    # Using the examples we just labeled, train the deduper and learn
-	    # blocking predicates
-	    deduper.train()
+		# Using the examples we just labeled, train the deduper and learn
+		# blocking predicates
+		deduper.train()
 
-	    # When finished, save our training to disk
-	    with open(training_file, 'w') as tf:
-	        deduper.writeTraining(tf)
+		# When finished, save our training to disk
+		with open(training_file, 'w') as tf:
+		    deduper.writeTraining(tf)
 
     # Save our weights and predicates to disk.  If the settings file
     # exists, we will skip all the training and learning next time we run
     # this file.
-    with open(settings_file, 'wb') as sf:
-        deduper.writeSettings(sf)
-	
+	with open(settings_file, 'wb') as sf:
+	    deduper.writeSettings(sf)
+
 	threshold = deduper.threshold(data_d, recall_weight=1)
 
-	
+
 	print('clustering...')
 	clustered_dupes = deduper.match(data_d, threshold)
 

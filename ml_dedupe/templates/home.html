@@ -1,13 +1,16 @@
 {% include "header.html" %}
-<html>
-	<head>
-	</head>
-	<body>
-    <form action="/dedupe_app/m" method="post" enctype="multipart/form-data">
-		  	{% csrf_token %}
-		  <p> Name : <input type="text" name="text" value="">
-		  <p> <input type="file" name="csv_file" /> </p>
-    	  <p> <input type="submit" value="Upload" /> </p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-2" center>Upload CSV File</h1>
+  </div>
+</div>
+<div class="container">
+	<div class="col-md-offset-1">
+	    <form action="/dedupe_app/m" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<p> Name : <input class="form-control" type="text" name="text" value="">
+			<p> <input type="file" name="csv_file" /> </p>
+			<p> <input class="btn btn-primary" type="submit" value="Upload" /> </p>
 		</form>
-	</body>
-</html>
+	</div>
+</div>
