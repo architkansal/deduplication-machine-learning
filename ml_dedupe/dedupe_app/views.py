@@ -103,7 +103,7 @@ def do_dedupe():
 	logging.getLogger().setLevel(log_level)
 	# ## Setup
 
-	input_file = 'csv_example_messy_input.csv'
+	input_file = 'tmp_dir2/input.csv'
 	output_file = 'csv_example_output.csv'
 	settings_file = 'csv_example_learned_settings'
 	training_file = 'csv_example_training.json'
@@ -113,23 +113,18 @@ def do_dedupe():
 
 	# If a settings file already exists, we'll just load that and skip training
 	if os.path.exists(settings_file):
-	    print('reading from', settings_file)
-	    with open(settings_file, 'rb') as f:
-	        deduper = dedupe.StaticDedupe(f)
+		print('reading from', settings_file)
+		with open(settings_file, 'rb') as f:
+			deduper = dedupe.StaticDedupe(f)
 	else:
-	    # ## Training
+		print 'start training...'
+		for k,v in data.iteritems():
+			fields = [ {'field' : k, 'type': v }, ]
 
-	    # Define the fields dedupe will pay attention to
-	    for k,v in data.iteritems():
-		    fields = [
-		        {'field' : k, 'type': v },
-		        ]
-		print fields
-	    # Create a new deduper object and pass our data model to it.
-	    deduper = dedupe.Dedupe(fields)
+		deduper = dedupe.Dedupe(fields)
 
-	    # To train dedupe, we feed it a sample of records.
-	    deduper.sample(data_d, 15000)
+		 # To train dedupe, we feed it a sample of records.
+		deduper.sample(data_d, 15000)
 
 	    # If we have training data saved from a previous run of dedupe,
 	    # look for it and load it in.
@@ -157,36 +152,21 @@ def do_dedupe():
 	    with open(training_file, 'w') as tf:
 	        deduper.writeTraining(tf)
 
-	    # Save our weights and predicates to disk.  If the settings file
-	    # exists, we will skip all the training and learning next time we run
-	    # this file.
-	    with open(settings_file, 'wb') as sf:
-	        deduper.writeSettings(sf)
-	        
-	# Find the threshold that will maximize a weighted average of our
-	# precision and recall.  When we set the recall weight to 2, we are
-	# saying we care twice as much about recall as we do precision.
-	#
-	# If we had more data, we would not pass in all the blocked data into
-	# this function but a representative sample.
-
+    # Save our weights and predicates to disk.  If the settings file
+    # exists, we will skip all the training and learning next time we run
+    # this file.
+    with open(settings_file, 'wb') as sf:
+        deduper.writeSettings(sf)
+	
 	threshold = deduper.threshold(data_d, recall_weight=1)
 
-	# ## Clustering
-
-	# `match` will return sets of record IDs that dedupe
-	# believes are all referring to the same entity.
-
+	
 	print('clustering...')
 	clustered_dupes = deduper.match(data_d, threshold)
 
 	print('# duplicate sets', len(clustered_dupes))
 
-	# ## Writing Results
-
-	# Write our original data back out to a CSV with a new column called 
-	# 'Cluster ID' which indicates which records refer to each other.
-
+	
 	cluster_membership = {}
 	cluster_id = 0
 	for (cluster_id, cluster) in enumerate(clustered_dupes):
@@ -250,7 +230,7 @@ def preProcess(column):
 	return column
 
 def readData(filename):
-	# print 'Reading Data...'
+	print 'Reading Data...'
 	print filename
 	data_d = {}
 	# try:
@@ -268,7 +248,7 @@ def readData(filename):
 			clean_row = [(k, preProcess(v)) for (k, v) in row.items()]
 			row_id = int(row['Id'])
 			data_d[row_id] = dict(clean_row)
-		# print 'Reading Successful...'
+		print 'Reading Successful...'
 	return data_d
 
 
