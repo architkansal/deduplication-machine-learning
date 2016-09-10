@@ -11,6 +11,7 @@ from django.template import RequestContext
 import os.path
 import sys
 import re
+import csv
 from django.core.files.base import ContentFile
 
 
@@ -22,10 +23,10 @@ def home(request):
 	return render(request,'home.html')
 
 def attrib(request):
-	data=[]
-	for x in range(0,5):
-		data.append(x)
-	return render(request,'dropdown.html',{'data':data})
+	uploaded_filename = open('tmp_dir2/sample.csv')
+	reader = csv.reader(uploaded_filename)
+	x = next(reader)
+	return render(request,'dropdown.html',{'data':x})
 
 def get_data(request):
 	return render(request, 'home.html', RequestContext(request, locals())) 
@@ -59,5 +60,7 @@ def m(request):
 		return HttpResponse(html)
 
 def got_it(request):
+	print request.POST['attr']
+	print request.POST['comp']
 	html = "<html><body>NOT SAVED</body></html>"
 	return HttpResponse(html)

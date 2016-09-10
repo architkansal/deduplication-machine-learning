@@ -3,14 +3,14 @@
 	<head>
 	</head>
 	<body>
-		  <form action="/dedupe_app/received" method="POST">
-		  	<input name="xyz" type="text" id="x" value="abc"></input>
+		  <form action="/dedupe_app/received" method="post">
+		  	<div class="addme">
 		  	<select name="attr">
-		  		{%for c in data%}
-		  		<option id="{{c}}"value="{{c}}">
+				  {%for c in data%}
+		  		<option>
 		  			{{c}}
 		  		</option>
-		  		{%endfor%}
+				  {%endfor%}
 		  	</select>
 		  	<select name="comp">
 		  		<option value="Default" id="0">
