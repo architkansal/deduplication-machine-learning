@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^attrib',views.attrib,name='attrib'),
     url(r'^index/',views.index, name='index'),
     url(r'^/get_data',views.get_data, name='index'),
+    url(r'^dedupe_app/m',views.m, name='m'),
 ]
