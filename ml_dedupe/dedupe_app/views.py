@@ -11,6 +11,7 @@ from django.template import RequestContext
 import os.path
 import sys
 import re
+import csv
 from django.core.files.base import ContentFile
 
 from future.builtins import next
@@ -38,6 +39,16 @@ def index(request):
 
 
 def home(request):
+	return render(request,'home.html')
+
+def attrib(request):
+	uploaded_filename = open('tmp_dir2/sample.csv')
+	reader = csv.reader(uploaded_filename)
+	x = next(reader)
+	total=[1,2,3,4,5,6,7,8,9,10]
+	return render(request,'dropdown.html',{'data':x,'total':total})
+
+def get_data(request):
 	return render(request, 'home.html', RequestContext(request, locals())) 
 
 
@@ -68,6 +79,7 @@ def m(request):
 	except:
 		html = "<html><body>NOT SAVED</body></html>"
 		return HttpResponse(html)
+
 
 
 
@@ -258,6 +270,25 @@ def readData(filename):
 			data_d[row_id] = dict(clean_row)
 		# print 'Reading Successful...'
 	return data_d
+
+
+
+def got_it(request):
+	attr="attr"
+	comp="comp"
+	data={}
+	for x in range(1,10):
+		comp+=str(x)
+		attr+=str(x)
+		if request.POST[comp] != 'None':
+			data[request.POST[attr]]=request.POST[comp]
+		comp = 'comp'
+		attr = 'attr'	
+	print data
+	html = "<html><body>NOT SAVED</body></html>"
+	return HttpResponse(html)
+
+
 
 
 

@@ -3,7 +3,7 @@
 	<head>
 	</head>
 	<body>
-		  <form action="/dedupe_app/m" method="post" enctype="multipart/form-data">
+    <form action="/dedupe_app/m" method="post" enctype="multipart/form-data">
 		  	{% csrf_token %}
 		  <p> Name : <input type="text" name="text" value="">
 		  <p> <input type="file" name="csv_file" /> </p>

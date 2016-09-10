@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Data Table</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Table Style</title>
+	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+</head>
+
+<body>
+<div class="table-title">
+<h3 align="left">Training Phase</h3>
+</div>
+<script>
+var mytable = "<table cellpadding=\"0\" cellspacing=\"0\">";
+mytable +="<thead><tr><th>Fields</th><th>Record A</th><th>Record B</th></tr></thead>";
+mytable +="<tbody><tr>";
+for (var i = 1; i < 13; i++) {
+  if (i % 3 == 1 && i != 1) {
+    mytable += "</tr><tr>";
+  }
+  mytable += "<td>[" + i + "]</td>";
+}
+
+mytable += "</tr></tbody></table>";
+
+document.write(mytable);
+</script>
+<br>
+<button type="submit">Yes</button>
+<button type="submit">No</button>
+<button type="submit">Unsure</button>
+<br> <br>
+<div class="table-title">
+<h5 align="left">Current Responses</h5>
+</div>
+<br>
+<script>
+var mytable1 = "<table cellpadding=\"0\" cellspacing=\"0\">";
+mytable1 +="<thead><tr><th>Positive</th><th>Negative</th><th>Unsure</th></tr></thead>";
+mytable1 +="<tbody><tr>";
+for (var i = 1; i < 4; i++) {
+  if (i % 3 == 1 && i != 1) {
+    mytable1 += "</tr><tr>";
+  }
+  mytable1 += "<td>[" + i + "]</td>";
+}
+
+mytable1 += "</tr></tbody></table>";
+
+document.write(mytable1);
+</script>
+
+
+</body>
+</html>
