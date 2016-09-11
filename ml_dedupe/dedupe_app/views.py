@@ -68,7 +68,7 @@ def attrib(request):
 	global fname
 	folder = 'tmp_dir2/' #request.path.replace("/", "_")
 	uploaded_filename = request.FILES['csv_file'].name
-	BASE_PATH = '/home/archit/django-user/deduplication-machine-learning/ml_dedupe'
+	BASE_PATH = 'C:/Users/VinayG/Desktop/mindml/deduplication-machine-learning/ml_dedupe'
 	# create the folder if it doesn't exist.
 	try:
 		os.mkdir(os.path.join(BASE_PATH, folder))
@@ -91,7 +91,9 @@ def attrib(request):
 	input_file = 'tmp_dir2/'+str(request.FILES['csv_file'].name)
 	reader = csv.reader(open_file)
 	x = next(reader)
-	total=[1,2,3,4,5,6,7,8,9,10]
+	total=[]
+	for m in range(1,10):
+		total.append(m)
 	return render(request,'dropdown.html',{'data':x,'total':total})
 
 
@@ -111,7 +113,6 @@ def m(request):
 			data[request.POST[attr]]=request.POST[comp]
 		comp = 'comp'
 		attr = 'attr'	
-	# print data
 	s_ur = do_dedupe(request)
 	# html = "<html><body>SAVED</body></html>"
 	ke=[]
@@ -119,7 +120,6 @@ def m(request):
 	for key in sorted(s_ur.keys()):
 		ke.append(key)
 		val.append(s_ur[key])
-		print "%s: %s" % (key, s_ur[key])
 	return render(request,'training.html',{'key':ke,'val':val})
 	# except:
 	# 	html = "<html><body>NOT SAVED</body></html>"
@@ -137,6 +137,10 @@ def m(request):
 
 
 def do_dedupe(request):
+	global yc
+	global nc
+	yc=0
+	nc=0
 	optp = optparse.OptionParser()
 	optp.add_option('-v', '--verbose', dest='verbose', action='count',
 					help='Increase verbosity (specify multiple times for more)'
@@ -165,10 +169,11 @@ def do_dedupe(request):
 	data_d = readData(input_file)
 	global deduper
 	# If a settings file already exists, we'll just load that and skip training
-	if os.path.exists(settings_file):
+	if False:
 		print('reading from', settings_file)
 		with open(settings_file, 'rb') as f:
 			deduper = dedupe.StaticDedupe(f)
+		print deduper
 	else:    # ## Training
 
 	# Define the fields dedupe will pay attention to
@@ -188,7 +193,7 @@ def do_dedupe(request):
 	# If we have training data saved from a previous run of dedupe,
 	# look for it and load it in.
 	# __Note:__ if you want to train from scratch, delete the training_file
-		if os.path.exists(training_file):
+		if False:
 			print('reading labeled examples from ', training_file)
 			with open(training_file, 'rb') as f:
 				deduper.readTraining(f)
