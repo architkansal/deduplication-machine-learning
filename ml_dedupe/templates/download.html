@@ -1,4 +1,4 @@
-<!-- { % include "header.html" % } -->
+{% include "header.html" %}
 <html>
 	<head>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -8,7 +8,7 @@
 		<h3> Process Complete. You can now download the output file </h3>
 	</div>	
     <form action="/dedupe_app/download" method="post" >
-		  	<!-- { % csrf_token % } -->
+		  	{% csrf_token %}
     	  <p> <input type="submit" value="Download O/P File" /> </p>
 	</form>
 	</body>
