@@ -1,22 +1,35 @@
 {% include "header.html" %}
 {% load static %}
-<div class="jumbotron jumbotron-fluid">
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: 25%">
+    <span class="sr-only">25% Complete (success)</span>
+    <p>Upload...</p>
+  </div>
+   <div class="progress-bar " style="width: 75%; background-color:#cbe8c2">
+    <span class="sr-only">75% Complete (success)</span>
+  </div>
+</div>
+</div>
+
+<div class="jumbotron jumbotron-fluid" >
   <div class="container">
-    <h2 class="display-2" center>Upload CSV File</h2>
+    <h2 class="display-2" style="text-align:center; color:black	">Upload CSV File</h2>
   </div>
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-5">
-		    <form action="/dedupe_app/attrib" method="post" enctype="multipart/form-data">
-				{% csrf_token %}
-				<!-- <p> Name : <input class="form-control" type="text" name="text" value=""> -->
-				<p> <input type="file" name="csv_file" /> </p>
-				<p> <input class=" btn btn-primary" type="submit" value="Upload" /> </p>
-			</form>
+		<div class="col-md-6">
+	    <form action="/dedupe_app/attrib" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<p> Name : <input class="form-control" type="text" name="text" value="">
+			<p> Description : <input class="form-control" type="text" name="text" value="">
+			<p> <input type="file" name="csv_file" /> </p>
+			<p> <input class=" btn btn-primary" type="submit" value="Upload" /> </p>
+		</form>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-6">
 			<img src="{% static 'csv.jpg' %}">
 		</div>
 	</div>
-</div>
+</body>
+</html>

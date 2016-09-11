@@ -1,4 +1,25 @@
+
 {% include "header.html" %}
+<div>
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: 25%">
+    <span class="sr-only">25% Complete (success)</span>
+    <p>Uploaded File</p>
+  </div>
+  <div class="progress-bar progress-bar-success" style="width: 25%">
+    <span class="sr-only">25% Complete (success)</span>
+    <p>Attributes Chosen</p>
+  </div>
+  <div class="progress-bar progress-bar-success" style="width: 25%">
+    <span class="sr-only">25% Complete (success)</span>
+    <p>Active Learning complete</p>
+  </div>
+   <div class="progress-bar " style="width: 25%; background-color:#cbe8c2">
+    <span class="sr-only">25% Complete (success)</span>
+    <p>Download The File...</p>
+  </div>
+</div>
+</div>
 <html>
 	<head>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -8,7 +29,9 @@
 		<h3> Process Complete. You can now download the output file </h3>
 	</div>	
     <form action="/dedupe_app/download" method="post" >
+
 		  	{% csrf_token %}
+
     	  <p> <input type="submit" value="Download O/P File" /> </p>
 	</form>
 	</body>
