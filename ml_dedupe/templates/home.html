@@ -1,16 +1,22 @@
 {% include "header.html" %}
+{% load static %}
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h2 class="display-2" center>Upload CSV File</h2>
   </div>
 </div>
 <div class="container">
-	<div class="col-md-offset-1">
-	    <form action="/dedupe_app/attrib" method="post" enctype="multipart/form-data">
-			{% csrf_token %}
-			<!-- <p> Name : <input class="form-control" type="text" name="text" value=""> -->
-			<p> <input type="file" name="csv_file" /> </p>
-			<p> <input class=" btn btn-primary" type="submit" value="Upload" /> </p>
-		</form>
+	<div class="row">
+		<div class="col-md-5">
+		    <form action="/dedupe_app/attrib" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<!-- <p> Name : <input class="form-control" type="text" name="text" value=""> -->
+				<p> <input type="file" name="csv_file" /> </p>
+				<p> <input class=" btn btn-primary" type="submit" value="Upload" /> </p>
+			</form>
+		</div>
+		<div class="col-md-7">
+			<img src="{% static 'csv.jpg' %}">
+		</div>
 	</div>
 </div>
