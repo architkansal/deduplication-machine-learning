@@ -451,9 +451,11 @@ def console_own_iter(request):
 		label = ''
 		labeled = False
 
+		ct=1
 		for pair in record_pair:
 			for field in fields:
-				send_user[field]=pair[field]
+				send_user[str(ct)+'_'+field]=pair[field]
+			ct+=1
 	send_user['positive']=yc
 	send_user['negative']=nc
 	print str(yc)
@@ -466,7 +468,7 @@ def console_own_iter(request):
 		val.append(send_user[key])
 	html="<table class='table'>"
 	html+="<thead>"
-	for c in key :
+	for c in ke :
 		html+="<th>"
 		html+=str(c)
 		html+="</th>"
