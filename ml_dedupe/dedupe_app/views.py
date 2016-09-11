@@ -68,7 +68,7 @@ def attrib(request):
 	global fname
 	folder = 'tmp_dir2/' #request.path.replace("/", "_")
 	uploaded_filename = request.FILES['csv_file'].name
-	BASE_PATH = 'C:/Users/VinayG/Desktop/mindml/deduplication-machine-learning/ml_dedupe'
+	BASE_PATH = '/home/archit/django-user/deduplication-machine-learning/ml_dedupe'
 	# create the folder if it doesn't exist.
 	try:
 		os.mkdir(os.path.join(BASE_PATH, folder))
