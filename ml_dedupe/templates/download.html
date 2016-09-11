@@ -1,0 +1,11 @@
+{% include "header.html" %}
+<html>
+	<head>
+	</head>
+	<body>
+    <form action="/dedupe_app/download" method="post" >
+		  	{% csrf_token %}
+    	  <p> <input type="submit" value="Download O/P File" /> </p>
+		</form>
+	</body>
+</html>

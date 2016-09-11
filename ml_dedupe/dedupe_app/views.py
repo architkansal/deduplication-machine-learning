@@ -23,6 +23,9 @@ import optparse
 import dedupe
 from unidecode import unidecode
 
+import tempfile
+from wsgiref.util import FileWrapper
+
 
 
 data = {}
@@ -282,7 +285,15 @@ def cluster_data(request):
 				for key in canonical_keys:
 					row.append(None)
 			writer.writerow(row)
-	return HttpResponse("<h1>Successful!!!!!!.....</h1>")
+	return render(request,'download.html')
+
+
+def download(request):
+	global output_file
+	wrapper = FileWrapper(file(output_file))
+	response = HttpResponse(wrapper,content_type = 'text/csv')
+	response['Content-Length'] = os.path.getsize(output_file)
+	return response
 
 
 
@@ -312,7 +323,8 @@ def readData(filename):
 	# except:
 	# 	print 'error'
 	# 	pass
-	with open('tmp_dir2/input.csv') as f:
+	global input_file
+	with open(input_file) as f:
 		print f
 		# print '1...'
 		reader = csv.DictReader(f)
