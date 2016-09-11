@@ -6,21 +6,13 @@
 		  <form action="http://localhost:8000" method="post">
 		  	<div class="addme">
 		  	<select>
+				  {%for c in data%}
 		  		<option>
-		  			1
+		  			{{c}}
 		  		</option>
+				  {%endfor%}
 		  	</select>
-		  	<select>
-		  		<option>
-		  			2
-		  		</option>
-		  	</select>
-		  	<select>
-		  		<option>
-		  			1
-		  		</option>
-		  	</select>
-		  	<select>
+		  	<!--<select>
 		  		<option>
 		  			2
 		  		</option>
@@ -45,6 +37,16 @@
 		  			2
 		  		</option>
 		  	</select>
+		  	<select>
+		  		<option>
+		  			1
+		  		</option>
+		  	</select>
+		  	<select>
+		  		<option>
+		  			2
+		  		</option>
+		  	</select>-->
 		  	<button type="submit">Submit</button>
 		  	<button onclick="add_me()"></button>
 		</form>
