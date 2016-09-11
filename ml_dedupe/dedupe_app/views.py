@@ -19,6 +19,12 @@ def index(request):
 
 
 def home(request):
+	return render(request,'home.html')
+
+def attrib(request):
+	return render(request,'dropdown.html')
+
+def get_data(request):
 	return render(request, 'home.html', RequestContext(request, locals())) 
 
 
