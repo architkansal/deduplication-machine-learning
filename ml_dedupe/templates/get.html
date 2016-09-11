@@ -1,0 +1,16 @@
+    <table class="table">
+      <thead>
+        {%for c,v in data.items %}
+        {%if c is not 'positive' or c is not 'negative' %}
+          <th>{{c}}</th>
+        {%endif%}
+        {%endfor%}
+      </thead>
+      <tbody>
+      <tr>
+        {%for c,v in data.items %}
+              <td>{{v}}</td>
+            {%endfor%}
+      </tr>
+      </tbody>
+    </table>

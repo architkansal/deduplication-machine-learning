@@ -1,17 +1,11 @@
+{% include "header.html" %}
+{% load static %}
 <!DOCTYPE html>
 <html >
   <head>
     <meta charset="UTF-8">
     <title>Data Table</title>
-    
-    
-    
-    
         <link rel="stylesheet" href="css/style.css">
-
-    
-    
-    
   </head>
 
   <body>
@@ -27,31 +21,90 @@
 <div class="table-title">
 <h3 align="left">Training Phase</h3>
 </div>
-<script>
-var mytable = "<table cellpadding=\"0\" cellspacing=\"0\">";
-mytable +="<thead><tr><th>Fields</th><th>Record A</th><th>Record B</th></tr></thead>";
-mytable +="<tbody><tr>";
-for (var i = 1; i < 13; i++) {
-  if (i % 3 == 1 && i != 1) {
-    mytable += "</tr><tr>";
-  }
-  mytable += "<td>[" + i + "]</td>";
-}
-
-mytable += "</tr></tbody></table>";
-
-document.write(mytable);
-</script>
+<div>
+<div class="xcz">
+    <table class="table">
+      <thead>
+        {%for c in key %}
+        <th>{{c}}</th>
+        {%endfor%}
+      </thead>
+      <tbody>
+      <tr>
+        {%for v in val %}
+              <td>{{v}}</td>
+            {%endfor%}
+      </tr>
+      </tbody>
+    </table>
+</div>
+</div>
 <br>
-<button type="submit">Yes</button>
-<button type="submit">No</button>
-<button type="submit">Unsure</button>
+<button type="submit"  class="yes" >Yes</button>
+<button type="submit" class="no">No</button>
+<button type="submit" class="unsure">Unsure</button>
+<form action="/dedupe_app/cluster_data" method="POST">
+  {% csrf_token %}
+  <button type="submit" class="finish">Finish</button>
+</form>
 <br> <br>
 <div class="table-title">
 <h5 align="left">Current Responses</h5>
 </div>
 <br>
-<script>
+
+
+<script type="text/javascript">
+$(".yes").click(function(e){
+  $.ajax({
+      url:"/dedupe_app/console_own_iter",
+      type:"POST",
+      data:{'data':'y', csrfmiddlewaretoken:'{{ csrf_token }}'},
+
+      success:function(data)
+      {
+        $(".xcz").html(data);
+      }
+  });
+});
+
+</script>
+
+<script type="text/javascript">
+$(".no").click(function(e){
+  $.ajax({
+      url:"/dedupe_app/console_own_iter",
+      type:"POST",
+      data:{'data':'n', csrfmiddlewaretoken:'{{ csrf_token }}'},
+
+      success:function(data)
+      {
+        $(".xcz").html(data)
+      }
+  });
+});
+
+</script>
+
+<script type="text/javascript">
+$(".unsure").click(function(e){
+  $.ajax({
+      url:"/dedupe_app/console_own_iter",
+      type:"POST",
+      data:{'data':'u', csrfmiddlewaretoken:'{{ csrf_token }}'},
+
+      success:function(data)
+      {
+        $(".xcz").html(data);
+      }
+  });
+});
+
+</script>
+
+
+
+<script type="text/javascript">
 var mytable1 = "<table cellpadding=\"0\" cellspacing=\"0\">";
 mytable1 +="<thead><tr><th>Positive</th><th>Negative</th><th>Unsure</th></tr></thead>";
 mytable1 +="<tbody><tr>";
@@ -66,7 +119,7 @@ mytable1 += "</tr></tbody></table>";
 
 document.write(mytable1);
 </script>
-
+<script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
 
 </body>
 </html>
