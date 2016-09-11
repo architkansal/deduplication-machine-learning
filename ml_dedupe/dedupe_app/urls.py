@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^home/',views.home, name='home'),
     url(r'^index/',views.index, name='index'),
+    url(r'^dedupe_app/m',views.m, name='m'),
 ]
