@@ -23,7 +23,6 @@ def home(request):
 	return render(request,'home.html')
 
 def attrib(request):
-<<<<<<< HEAD
 	uploaded_filename = open('tmp_dir2/sample.csv')
 	reader = csv.reader(uploaded_filename)
 	x = next(reader)
