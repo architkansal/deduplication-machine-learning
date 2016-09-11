@@ -37,7 +37,7 @@ p18
 I6410461724531563761
 sS'__name__'
 p19
-S'(wholeFieldPredicate, Phone)'
+V(wholeFieldPredicate, Phone)
 p20
 sS'func'
 p21
@@ -46,7 +46,7 @@ wholeFieldPredicate
 p22
 sS'field'
 p23
-S'Phone'
+VPhone
 p24
 sbag0
 (g14
@@ -57,7 +57,7 @@ Rp26
 g18
 I-9083105583828109333
 sg19
-S'(firstTokenPredicate, Phone)'
+V(firstTokenPredicate, Phone)
 p28
 sg21
 cdedupe.predicates
@@ -74,7 +74,7 @@ Rp31
 g18
 I2973062451850511518
 sg19
-S'(commonIntegerPredicate, Phone)'
+V(commonIntegerPredicate, Phone)
 p33
 sg21
 cdedupe.predicates
@@ -91,7 +91,7 @@ Rp36
 g18
 I-1760885962446012989
 sg19
-S'(nearIntegersPredicate, Phone)'
+V(nearIntegersPredicate, Phone)
 p38
 sg21
 cdedupe.predicates
@@ -108,7 +108,7 @@ Rp41
 g18
 I3130978320515755934
 sg19
-S'(firstIntegerPredicate, Phone)'
+V(firstIntegerPredicate, Phone)
 p43
 sg21
 cdedupe.predicates
@@ -125,7 +125,7 @@ Rp46
 g18
 I572703418347365222
 sg19
-S'(sameThreeCharStartPredicate, Phone)'
+V(sameThreeCharStartPredicate, Phone)
 p48
 sg21
 cdedupe.predicates
@@ -142,7 +142,7 @@ Rp51
 g18
 I-7773597342498170843
 sg19
-S'(sameFiveCharStartPredicate, Phone)'
+V(sameFiveCharStartPredicate, Phone)
 p53
 sg21
 cdedupe.predicates
@@ -159,7 +159,7 @@ Rp56
 g18
 I-5705151467061299567
 sg19
-S'(sameSevenCharStartPredicate, Phone)'
+V(sameSevenCharStartPredicate, Phone)
 p58
 sg21
 cdedupe.predicates
@@ -176,7 +176,7 @@ Rp61
 g18
 I3073795256519914082
 sg19
-S'(commonTwoTokens, Phone)'
+V(commonTwoTokens, Phone)
 p63
 sg21
 cdedupe.predicates
@@ -193,7 +193,7 @@ Rp66
 g18
 I7924310317743081618
 sg19
-S'(commonThreeTokens, Phone)'
+V(commonThreeTokens, Phone)
 p68
 sg21
 cdedupe.predicates
@@ -210,7 +210,7 @@ Rp71
 g18
 I-8732054964909911981
 sg19
-S'(fingerprint, Phone)'
+V(fingerprint, Phone)
 p73
 sg21
 cdedupe.predicates
@@ -227,7 +227,7 @@ Rp76
 g18
 I-5168341012184767641
 sg19
-S'(oneGramFingerprint, Phone)'
+V(oneGramFingerprint, Phone)
 p78
 sg21
 cdedupe.predicates
@@ -244,7 +244,7 @@ Rp81
 g18
 I-1938556535271651055
 sg19
-S'(twoGramFingerprint, Phone)'
+V(twoGramFingerprint, Phone)
 p83
 sg21
 cdedupe.predicates
@@ -261,7 +261,7 @@ Rp86
 g18
 I-2826791359150570713
 sg19
-S'(sortedAcronym, Phone)'
+V(sortedAcronym, Phone)
 p88
 sg21
 cdedupe.predicates
@@ -278,7 +278,7 @@ Rp91
 g18
 I-1553189275330008834
 sg19
-S'(commonFourGram, Phone)'
+V(commonFourGram, Phone)
 p93
 sg21
 cdedupe.predicates
@@ -295,7 +295,7 @@ Rp96
 g18
 I-7928302116548927759
 sg19
-S'(commonSixGram, Phone)'
+V(commonSixGram, Phone)
 p98
 sg21
 cdedupe.predicates
@@ -312,7 +312,7 @@ Rp101
 g18
 I1234515014517274091
 sg19
-S'(tokenFieldPredicate, Phone)'
+V(tokenFieldPredicate, Phone)
 p103
 sg21
 cdedupe.predicates
@@ -329,7 +329,7 @@ Rp106
 g18
 I7600663209691611273
 sg19
-S'(suffixArray, Phone)'
+V(suffixArray, Phone)
 p108
 sg21
 cdedupe.predicates
@@ -346,7 +346,7 @@ Rp111
 g18
 I5523360571085405163
 sg19
-S'(doubleMetaphone, Phone)'
+V(doubleMetaphone, Phone)
 p113
 sg21
 cdedupe.predicates
@@ -363,7 +363,7 @@ Rp116
 g18
 I7161137989658942024
 sg19
-S'(metaphoneToken, Phone)'
+V(metaphoneToken, Phone)
 p118
 sg21
 cdedupe.predicates
@@ -383,7 +383,7 @@ S'threshold'
 p124
 F0.2
 sg19
-S'(0.2, Phone)'
+V(0.2, Phone)
 p125
 sg23
 g24
@@ -396,7 +396,7 @@ Rp127
 g124
 F0.4
 sg19
-S'(0.4, Phone)'
+V(0.4, Phone)
 p129
 sg23
 g24
@@ -409,7 +409,7 @@ Rp131
 g124
 F0.6
 sg19
-S'(0.6, Phone)'
+V(0.6, Phone)
 p133
 sg23
 g24
@@ -422,7 +422,7 @@ Rp135
 g124
 F0.8
 sg19
-S'(0.8, Phone)'
+V(0.8, Phone)
 p137
 sg23
 g24
@@ -437,7 +437,7 @@ Rp140
 g124
 F0.2
 sg19
-S'(0.2, Phone)'
+V(0.2, Phone)
 p142
 sg23
 g24
@@ -450,7 +450,7 @@ Rp144
 g124
 F0.4
 sg19
-S'(0.4, Phone)'
+V(0.4, Phone)
 p146
 sg23
 g24
@@ -463,7 +463,7 @@ Rp148
 g124
 F0.6
 sg19
-S'(0.6, Phone)'
+V(0.6, Phone)
 p150
 sg23
 g24
@@ -476,7 +476,7 @@ Rp152
 g124
 F0.8
 sg19
-S'(0.8, Phone)'
+V(0.8, Phone)
 p154
 sg23
 g24
@@ -491,7 +491,7 @@ Rp157
 g124
 F0.2
 sg19
-S'(0.2, Phone)'
+V(0.2, Phone)
 p159
 sg23
 g24
@@ -504,7 +504,7 @@ Rp161
 g124
 F0.4
 sg19
-S'(0.4, Phone)'
+V(0.4, Phone)
 p163
 sg23
 g24
@@ -517,7 +517,7 @@ Rp165
 g124
 F0.6
 sg19
-S'(0.6, Phone)'
+V(0.6, Phone)
 p167
 sg23
 g24
@@ -530,7 +530,7 @@ Rp169
 g124
 F0.8
 sg19
-S'(0.8, Phone)'
+V(0.8, Phone)
 p171
 sg23
 g24
@@ -545,7 +545,7 @@ Rp174
 g124
 F0.2
 sg19
-S'(0.2, Phone)'
+V(0.2, Phone)
 p176
 sg23
 g24
@@ -558,7 +558,7 @@ Rp178
 g124
 F0.4
 sg19
-S'(0.4, Phone)'
+V(0.4, Phone)
 p180
 sg23
 g24
@@ -571,7 +571,7 @@ Rp182
 g124
 F0.6
 sg19
-S'(0.6, Phone)'
+V(0.6, Phone)
 p184
 sg23
 g24
@@ -584,7 +584,7 @@ Rp186
 g124
 F0.8
 sg19
-S'(0.8, Phone)'
+V(0.8, Phone)
 p188
 sg23
 g24
@@ -592,7 +592,7 @@ sbasg23
 g24
 sS'name'
 p189
-S'(Phone: String)'
+V(Phone: String)
 p190
 sS'has_missing'
 p191
@@ -619,12 +619,12 @@ Rp199
 g18
 I5671443427162401619
 sg19
-S'(wholeFieldPredicate, Address)'
+V(wholeFieldPredicate, Address)
 p201
 sg21
 g22
 sg23
-S'Address'
+VAddress
 p202
 sbag0
 (g14
@@ -635,7 +635,7 @@ Rp204
 g18
 I-6144244722235729819
 sg19
-S'(firstTokenPredicate, Address)'
+V(firstTokenPredicate, Address)
 p206
 sg21
 g29
@@ -650,7 +650,7 @@ Rp208
 g18
 I-6105001349865885936
 sg19
-S'(commonIntegerPredicate, Address)'
+V(commonIntegerPredicate, Address)
 p210
 sg21
 g34
@@ -665,7 +665,7 @@ Rp212
 g18
 I4311792128687445309
 sg19
-S'(nearIntegersPredicate, Address)'
+V(nearIntegersPredicate, Address)
 p214
 sg21
 g39
@@ -680,7 +680,7 @@ Rp216
 g18
 I1112459212690108004
 sg19
-S'(firstIntegerPredicate, Address)'
+V(firstIntegerPredicate, Address)
 p218
 sg21
 g44
@@ -695,7 +695,7 @@ Rp220
 g18
 I2476103115129517596
 sg19
-S'(sameThreeCharStartPredicate, Address)'
+V(sameThreeCharStartPredicate, Address)
 p222
 sg21
 g49
@@ -710,7 +710,7 @@ Rp224
 g18
 I-1081331885272860157
 sg19
-S'(sameFiveCharStartPredicate, Address)'
+V(sameFiveCharStartPredicate, Address)
 p226
 sg21
 g54
@@ -725,7 +725,7 @@ Rp228
 g18
 I4854036202275454947
 sg19
-S'(sameSevenCharStartPredicate, Address)'
+V(sameSevenCharStartPredicate, Address)
 p230
 sg21
 g59
@@ -740,7 +740,7 @@ Rp232
 g18
 I6644754370395040888
 sg19
-S'(commonTwoTokens, Address)'
+V(commonTwoTokens, Address)
 p234
 sg21
 g64
@@ -755,7 +755,7 @@ Rp236
 g18
 I-3022822841853469504
 sg19
-S'(commonThreeTokens, Address)'
+V(commonThreeTokens, Address)
 p238
 sg21
 g69
@@ -770,7 +770,7 @@ Rp240
 g18
 I6174096197962272541
 sg19
-S'(fingerprint, Address)'
+V(fingerprint, Address)
 p242
 sg21
 g74
@@ -785,7 +785,7 @@ Rp244
 g18
 I3046490261813618045
 sg19
-S'(oneGramFingerprint, Address)'
+V(oneGramFingerprint, Address)
 p246
 sg21
 g79
@@ -800,7 +800,7 @@ Rp248
 g18
 I-4528934104119463681
 sg19
-S'(twoGramFingerprint, Address)'
+V(twoGramFingerprint, Address)
 p250
 sg21
 g84
@@ -815,7 +815,7 @@ Rp252
 g18
 I3238180657210265385
 sg19
-S'(sortedAcronym, Address)'
+V(sortedAcronym, Address)
 p254
 sg21
 g89
@@ -830,7 +830,7 @@ Rp256
 g18
 I-1165911001230499664
 sg19
-S'(commonFourGram, Address)'
+V(commonFourGram, Address)
 p258
 sg21
 g94
@@ -845,7 +845,7 @@ Rp260
 g18
 I-381466026223483213
 sg19
-S'(commonSixGram, Address)'
+V(commonSixGram, Address)
 p262
 sg21
 g99
@@ -860,7 +860,7 @@ Rp264
 g18
 I1177255931426260581
 sg19
-S'(tokenFieldPredicate, Address)'
+V(tokenFieldPredicate, Address)
 p266
 sg21
 g104
@@ -875,7 +875,7 @@ Rp268
 g18
 I6245013628151581675
 sg19
-S'(suffixArray, Address)'
+V(suffixArray, Address)
 p270
 sg21
 g109
@@ -890,7 +890,7 @@ Rp272
 g18
 I-7390532110034617635
 sg19
-S'(doubleMetaphone, Address)'
+V(doubleMetaphone, Address)
 p274
 sg21
 g114
@@ -905,7 +905,7 @@ Rp276
 g18
 I6462365307518102858
 sg19
-S'(metaphoneToken, Address)'
+V(metaphoneToken, Address)
 p278
 sg21
 g119
@@ -920,7 +920,7 @@ Rp280
 g124
 F0.2
 sg19
-S'(0.2, Address)'
+V(0.2, Address)
 p282
 sg23
 g202
@@ -933,7 +933,7 @@ Rp284
 g124
 F0.4
 sg19
-S'(0.4, Address)'
+V(0.4, Address)
 p286
 sg23
 g202
@@ -946,7 +946,7 @@ Rp288
 g124
 F0.6
 sg19
-S'(0.6, Address)'
+V(0.6, Address)
 p290
 sg23
 g202
@@ -959,7 +959,7 @@ Rp292
 g124
 F0.8
 sg19
-S'(0.8, Address)'
+V(0.8, Address)
 p294
 sg23
 g202
@@ -972,7 +972,7 @@ Rp296
 g124
 F0.2
 sg19
-S'(0.2, Address)'
+V(0.2, Address)
 p298
 sg23
 g202
@@ -985,7 +985,7 @@ Rp300
 g124
 F0.4
 sg19
-S'(0.4, Address)'
+V(0.4, Address)
 p302
 sg23
 g202
@@ -998,7 +998,7 @@ Rp304
 g124
 F0.6
 sg19
-S'(0.6, Address)'
+V(0.6, Address)
 p306
 sg23
 g202
@@ -1011,7 +1011,7 @@ Rp308
 g124
 F0.8
 sg19
-S'(0.8, Address)'
+V(0.8, Address)
 p310
 sg23
 g202
@@ -1024,7 +1024,7 @@ Rp312
 g124
 F0.2
 sg19
-S'(0.2, Address)'
+V(0.2, Address)
 p314
 sg23
 g202
@@ -1037,7 +1037,7 @@ Rp316
 g124
 F0.4
 sg19
-S'(0.4, Address)'
+V(0.4, Address)
 p318
 sg23
 g202
@@ -1050,7 +1050,7 @@ Rp320
 g124
 F0.6
 sg19
-S'(0.6, Address)'
+V(0.6, Address)
 p322
 sg23
 g202
@@ -1063,7 +1063,7 @@ Rp324
 g124
 F0.8
 sg19
-S'(0.8, Address)'
+V(0.8, Address)
 p326
 sg23
 g202
@@ -1076,7 +1076,7 @@ Rp328
 g124
 F0.2
 sg19
-S'(0.2, Address)'
+V(0.2, Address)
 p330
 sg23
 g202
@@ -1089,7 +1089,7 @@ Rp332
 g124
 F0.4
 sg19
-S'(0.4, Address)'
+V(0.4, Address)
 p334
 sg23
 g202
@@ -1102,7 +1102,7 @@ Rp336
 g124
 F0.6
 sg19
-S'(0.6, Address)'
+V(0.6, Address)
 p338
 sg23
 g202
@@ -1115,14 +1115,14 @@ Rp340
 g124
 F0.8
 sg19
-S'(0.8, Address)'
+V(0.8, Address)
 p342
 sg23
 g202
 sbasg23
 g202
 sg189
-S'(Address: String)'
+V(Address: String)
 p343
 sg191
 I00
@@ -1149,17 +1149,17 @@ Rp351
 g18
 I-2049731014695608420
 sg19
-S'(wholeFieldPredicate, Zip)'
+V(wholeFieldPredicate, Zip)
 p353
 sg21
 g22
 sg23
-S'Zip'
+VZip
 p354
 sbasg23
 g354
 sg189
-S'(Zip: Exact)'
+V(Zip: Exact)
 p355
 sg191
 I00
@@ -1180,12 +1180,12 @@ Rp361
 g18
 I-6626315475449539257
 sg19
-S'(wholeFieldPredicate, Site name)'
+V(wholeFieldPredicate, Site name)
 p363
 sg21
 g22
 sg23
-S'Site name'
+VSite name
 p364
 sbag0
 (g14
@@ -1196,7 +1196,7 @@ Rp366
 g18
 I-1676047828946474887
 sg19
-S'(firstTokenPredicate, Site name)'
+V(firstTokenPredicate, Site name)
 p368
 sg21
 g29
@@ -1211,7 +1211,7 @@ Rp370
 g18
 I-1840087744078989916
 sg19
-S'(commonIntegerPredicate, Site name)'
+V(commonIntegerPredicate, Site name)
 p372
 sg21
 g34
@@ -1226,7 +1226,7 @@ Rp374
 g18
 I7817470067179259029
 sg19
-S'(nearIntegersPredicate, Site name)'
+V(nearIntegersPredicate, Site name)
 p376
 sg21
 g39
@@ -1241,7 +1241,7 @@ Rp378
 g18
 I-4623847622460082484
 sg19
-S'(firstIntegerPredicate, Site name)'
+V(firstIntegerPredicate, Site name)
 p380
 sg21
 g44
@@ -1256,7 +1256,7 @@ Rp382
 g18
 I3717826838427274128
 sg19
-S'(sameThreeCharStartPredicate, Site name)'
+V(sameThreeCharStartPredicate, Site name)
 p384
 sg21
 g49
@@ -1271,7 +1271,7 @@ Rp386
 g18
 I6684586677310732519
 sg19
-S'(sameFiveCharStartPredicate, Site name)'
+V(sameFiveCharStartPredicate, Site name)
 p388
 sg21
 g54
@@ -1286,7 +1286,7 @@ Rp390
 g18
 I8535006692776020103
 sg19
-S'(sameSevenCharStartPredicate, Site name)'
+V(sameSevenCharStartPredicate, Site name)
 p392
 sg21
 g59
@@ -1301,7 +1301,7 @@ Rp394
 g18
 I-2742899307456897812
 sg19
-S'(commonTwoTokens, Site name)'
+V(commonTwoTokens, Site name)
 p396
 sg21
 g64
@@ -1316,7 +1316,7 @@ Rp398
 g18
 I4555108844113193512
 sg19
-S'(commonThreeTokens, Site name)'
+V(commonThreeTokens, Site name)
 p400
 sg21
 g69
@@ -1331,7 +1331,7 @@ Rp402
 g18
 I-2539214338929963279
 sg19
-S'(fingerprint, Site name)'
+V(fingerprint, Site name)
 p404
 sg21
 g74
@@ -1346,7 +1346,7 @@ Rp406
 g18
 I6213838375728881137
 sg19
-S'(oneGramFingerprint, Site name)'
+V(oneGramFingerprint, Site name)
 p408
 sg21
 g79
@@ -1361,7 +1361,7 @@ Rp410
 g18
 I-706507478314931557
 sg19
-S'(twoGramFingerprint, Site name)'
+V(twoGramFingerprint, Site name)
 p412
 sg21
 g84
@@ -1376,7 +1376,7 @@ Rp414
 g18
 I3428609802947094529
 sg19
-S'(sortedAcronym, Site name)'
+V(sortedAcronym, Site name)
 p416
 sg21
 g89
@@ -1391,7 +1391,7 @@ Rp418
 g18
 I-5596487637730070380
 sg19
-S'(commonFourGram, Site name)'
+V(commonFourGram, Site name)
 p420
 sg21
 g94
@@ -1406,7 +1406,7 @@ Rp422
 g18
 I1113996927219811987
 sg19
-S'(commonSixGram, Site name)'
+V(commonSixGram, Site name)
 p424
 sg21
 g99
@@ -1421,7 +1421,7 @@ Rp426
 g18
 I5056999849257551481
 sg19
-S'(tokenFieldPredicate, Site name)'
+V(tokenFieldPredicate, Site name)
 p428
 sg21
 g104
@@ -1436,7 +1436,7 @@ Rp430
 g18
 I3919160856651086543
 sg19
-S'(suffixArray, Site name)'
+V(suffixArray, Site name)
 p432
 sg21
 g109
@@ -1451,7 +1451,7 @@ Rp434
 g18
 I-4980054313565849079
 sg19
-S'(doubleMetaphone, Site name)'
+V(doubleMetaphone, Site name)
 p436
 sg21
 g114
@@ -1466,7 +1466,7 @@ Rp438
 g18
 I1648589523656384038
 sg19
-S'(metaphoneToken, Site name)'
+V(metaphoneToken, Site name)
 p440
 sg21
 g119
@@ -1481,7 +1481,7 @@ Rp442
 g124
 F0.2
 sg19
-S'(0.2, Site name)'
+V(0.2, Site name)
 p444
 sg23
 g364
@@ -1494,7 +1494,7 @@ Rp446
 g124
 F0.4
 sg19
-S'(0.4, Site name)'
+V(0.4, Site name)
 p448
 sg23
 g364
@@ -1507,7 +1507,7 @@ Rp450
 g124
 F0.6
 sg19
-S'(0.6, Site name)'
+V(0.6, Site name)
 p452
 sg23
 g364
@@ -1520,7 +1520,7 @@ Rp454
 g124
 F0.8
 sg19
-S'(0.8, Site name)'
+V(0.8, Site name)
 p456
 sg23
 g364
@@ -1533,7 +1533,7 @@ Rp458
 g124
 F0.2
 sg19
-S'(0.2, Site name)'
+V(0.2, Site name)
 p460
 sg23
 g364
@@ -1546,7 +1546,7 @@ Rp462
 g124
 F0.4
 sg19
-S'(0.4, Site name)'
+V(0.4, Site name)
 p464
 sg23
 g364
@@ -1559,7 +1559,7 @@ Rp466
 g124
 F0.6
 sg19
-S'(0.6, Site name)'
+V(0.6, Site name)
 p468
 sg23
 g364
@@ -1572,7 +1572,7 @@ Rp470
 g124
 F0.8
 sg19
-S'(0.8, Site name)'
+V(0.8, Site name)
 p472
 sg23
 g364
@@ -1585,7 +1585,7 @@ Rp474
 g124
 F0.2
 sg19
-S'(0.2, Site name)'
+V(0.2, Site name)
 p476
 sg23
 g364
@@ -1598,7 +1598,7 @@ Rp478
 g124
 F0.4
 sg19
-S'(0.4, Site name)'
+V(0.4, Site name)
 p480
 sg23
 g364
@@ -1611,7 +1611,7 @@ Rp482
 g124
 F0.6
 sg19
-S'(0.6, Site name)'
+V(0.6, Site name)
 p484
 sg23
 g364
@@ -1624,7 +1624,7 @@ Rp486
 g124
 F0.8
 sg19
-S'(0.8, Site name)'
+V(0.8, Site name)
 p488
 sg23
 g364
@@ -1637,7 +1637,7 @@ Rp490
 g124
 F0.2
 sg19
-S'(0.2, Site name)'
+V(0.2, Site name)
 p492
 sg23
 g364
@@ -1650,7 +1650,7 @@ Rp494
 g124
 F0.4
 sg19
-S'(0.4, Site name)'
+V(0.4, Site name)
 p496
 sg23
 g364
@@ -1663,7 +1663,7 @@ Rp498
 g124
 F0.6
 sg19
-S'(0.6, Site name)'
+V(0.6, Site name)
 p500
 sg23
 g364
@@ -1676,14 +1676,14 @@ Rp502
 g124
 F0.8
 sg19
-S'(0.8, Site name)'
+V(0.8, Site name)
 p504
 sg23
 g364
 sbasg23
 g364
 sg189
-S'(Site name: String)'
+V(Site name: String)
 p505
 sg191
 I00
@@ -1719,7 +1719,7 @@ Rp4
 (dp5
 S'alpha'
 p6
-I1
+F0.01
 sS'bias'
 p7
 cnumpy.core.multiarray
@@ -1741,7 +1741,7 @@ NNNI-1
 I-1
 I0
 tp14
-bS'\xb6\xb3\xc0\xa7\xac\x1d\x02@'
+bS'\xd7\x06i\x00vx\n@'
 p15
 tp16
 Rp17
@@ -1770,7 +1770,7 @@ Rp26
 tp27
 g12
 I00
-S'\xe8\xc6\xb8\x08\x8f\xa5\xf3?^\xe0`>\xf2q\xfa\xbf\xe2\xce?\x80\xb6C\xe7?\x80\xda\xc5q\xcc5\xef?'
+S"\x17\xfb\xae\x7f\x1e\xa9'\xc0\xb2\xe9s\xb9\x81\xff\x16@\xf2\xbc\x97\x19)\r\x04@\xf2d/\xf3\x97x\t@"
 p28
 tp29
 bsb.(ccopy_reg
@@ -1794,19 +1794,19 @@ Rp6
 (dp7
 S'_cached_hash'
 p8
-I-4528934104119463681
+I8535006692776020103
 sS'__name__'
 p9
-S'(twoGramFingerprint, Address)'
+V(sameSevenCharStartPredicate, Site name)
 p10
 sS'func'
 p11
 cdedupe.predicates
-twoGramFingerprint
+sameSevenCharStartPredicate
 p12
 sS'field'
 p13
-S'Address'
+VSite name
 p14
 sbg0
 (cdedupe.predicates
@@ -1819,14 +1819,14 @@ Rp17
 g8
 I-2049731014695608420
 sg9
-S'(wholeFieldPredicate, Zip)'
+V(wholeFieldPredicate, Zip)
 p19
 sg11
 cdedupe.predicates
 wholeFieldPredicate
 p20
 sg13
-S'Zip'
+VZip
 p21
 sbtp22
 tp23
@@ -1841,98 +1841,81 @@ Ntp25
 Rp26
 (dp27
 g8
-I6462365307518102858
+I572703418347365222
 sg9
-S'(metaphoneToken, Address)'
+V(sameThreeCharStartPredicate, Phone)
 p28
 sg11
 cdedupe.predicates
-metaphoneToken
+sameThreeCharStartPredicate
 p29
 sg13
-g14
+VPhone
+p30
 sbg0
 (g3
 g4
-Ntp30
-Rp31
-(dp32
+Ntp31
+Rp32
+(dp33
 g8
-I572703418347365222
+I-2826791359150570713
 sg9
-S'(sameThreeCharStartPredicate, Phone)'
-p33
+V(sortedAcronym, Phone)
+p34
 sg11
 cdedupe.predicates
-sameThreeCharStartPredicate
-p34
-sg13
-S'Phone'
+sortedAcronym
 p35
+sg13
+g30
 sbtp36
 tp37
 Rp38
 g0
 (g1
 g2
-(g0
-(g3
-g4
-Ntp39
-Rp40
-(dp41
-g8
-I-6626315475449539257
-sg9
-S'(wholeFieldPredicate, Site name)'
-p42
-sg11
-g20
-sg13
-S'Site name'
-p43
-sbg0
+(g26
+g0
 (cdedupe.predicates
-TfidfTextCanopyPredicate
-p44
+TfidfNGramCanopyPredicate
+p39
 g4
-Ntp45
-Rp46
-(dp47
+Ntp40
+Rp41
+(dp42
 S'threshold'
-p48
-F0.8
+p43
+F0.2
 sg9
-S'(0.8, Site name)'
-p49
+V(0.2, Phone)
+p44
 sg13
-g43
-sbtp50
-tp51
-Rp52
+g30
+sbtp45
+tp46
+Rp47
 g0
 (g1
 g2
-(g0
+(g32
+g0
 (g3
 g4
-Ntp53
-Rp54
-(dp55
+Ntp48
+Rp49
+(dp50
 g8
-I-1840087744078989916
+I3428609802947094529
 sg9
-S'(commonIntegerPredicate, Site name)'
-p56
+V(sortedAcronym, Site name)
+p51
 sg11
-cdedupe.predicates
-commonIntegerPredicate
-p57
+g35
 sg13
-g43
-sbg17
-tp58
-tp59
-Rp60
-tp61
+g14
+sbtp52
+tp53
+Rp54
+tp55
 .

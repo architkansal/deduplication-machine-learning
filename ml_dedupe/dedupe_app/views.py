@@ -26,10 +26,10 @@ from unidecode import unidecode
 
 
 data = {}
-data['Site name'] = 'String'
-data['Address']='String'
-data['Zip']='Exact'
-data['Phone']='String'
+# data['Site name'] = 'String'
+# data['Address']='String'
+# data['Zip']='Exact'
+# data['Phone']='String'
 
 uploaded_filename=''
 full_filename=''
@@ -42,10 +42,11 @@ yc=0
 nc=0
 uc=0
 
-input_file = 'tmp_dir2/input.csv'
-output_file = 'tmp_dir2/output.csv'
-settings_file = 'tmp_dir2/learned_settings'
-training_file = 'tmp_dir2/training.json'
+input_file = ''
+output_file = ''
+settings_file = ''
+training_file = ''
+fname=''
 
 
 data_d = None
@@ -60,18 +61,8 @@ def home(request):
 	return render(request,'home.html')
 
 def attrib(request):
-	uploaded_filename = open('tmp_dir2/sample.csv')
-	reader = csv.reader(uploaded_filename)
-	x = next(reader)
-	total=[1,2,3,4,5,6,7,8,9,10]
-	return render(request,'dropdown.html',{'data':x,'total':total})
-
-def get_data(request):
-	return render(request, 'home.html', RequestContext(request, locals())) 
-
-
-def m(request):
-	print request.FILES['csv_file']
+	global input_file
+	global fname
 	folder = 'tmp_dir2/' #request.path.replace("/", "_")
 	uploaded_filename = request.FILES['csv_file'].name
 	BASE_PATH = '/home//archit/django-user/deduplication-machine-learning/ml_dedupe'
@@ -91,8 +82,35 @@ def m(request):
 	for chunk in file_content.chunks():
 		fout.write(chunk)
 	fout.close()
+
+	fname = (str(request.FILES['csv_file'].name))[:-4]
+	open_file = open('tmp_dir2/'+str(request.FILES['csv_file'].name))
+	input_file = 'tmp_dir2/'+str(request.FILES['csv_file'].name)
+	reader = csv.reader(open_file)
+	x = next(reader)
+	total=[1,2,3,4,5,6,7,8,9,10]
+	return render(request,'dropdown.html',{'data':x,'total':total})
+
+
+
+def get_data(request):
+	return render(request, 'home.html', RequestContext(request, locals())) 
+
+
+def m(request):
+	global data
+	attr="attr"
+	comp="comp"
+	for x in range(1,10):
+		comp+=str(x)
+		attr+=str(x)
+		if request.POST[comp] != 'None':
+			data[request.POST[attr]]=request.POST[comp]
+		comp = 'comp'
+		attr = 'attr'	
+	# print data
 	s_ur = do_dedupe(request)
-	html = "<html><body>SAVED</body></html>"
+	# html = "<html><body>SAVED</body></html>"
 	return render(request,'training.html',{'data':s_ur})
 	# except:
 	# 	html = "<html><body>NOT SAVED</body></html>"
@@ -123,11 +141,15 @@ def do_dedupe(request):
 			log_level = logging.DEBUG
 	logging.getLogger().setLevel(log_level)
 	# ## Setup
+	global input_file
+	global output_file
+	global settings_file
+	global training_file
 
-	input_file = 'tmp_dir2/input.csv'
-	output_file = 'csv_example_output.csv'
-	settings_file = 'csv_example_learned_settings'
-	training_file = 'csv_example_training.json'
+	# input_file = 'tmp_dir2/'
+	output_file = 'tmp_dir2/' + fname +'output.csv'
+	settings_file = 'tmp_dir2/' + fname +'learned_settings'
+	training_file = 'tmp_dir2/' + fname +'csv_example_training.json'
 
 	print('importing data ...')
 	global data_d
@@ -199,7 +221,7 @@ def cluster_data(request):
 	# If we had more data, we would not pass in all the blocked data into
 	# this function but a representative sample.
 
-	threshold = deduper.threshold(data_d, recall_weight=1)
+	threshold = deduper.threshold(data_d, recall_weight=2)
 
 	# ## Clustering
 
@@ -260,7 +282,7 @@ def cluster_data(request):
 				for key in canonical_keys:
 					row.append(None)
 			writer.writerow(row)
-	return HttpResponse("<h1>BC</h1>")
+	return HttpResponse("<h1>Successful!!!!!!.....</h1>")
 
 
 
@@ -345,10 +367,11 @@ def console_own(deduper,request):
 	for record_pair in uncertain_pairs:
 		label = ''
 		labeled = False
-
+		ct=1
 		for pair in record_pair:
 			for field in fields:
-				send_user[field]=pair[field]
+				send_user[field+' '+str(ct)]=pair[field]
+			ct+=1
 
 	send_user['positive']=n_match
 	send_user['negative']=n_distinct
@@ -441,10 +464,11 @@ def console_own_iter(request):
 	for record_pair in uncertain_pairs:
 		label = ''
 		labeled = False
-
+		ct=1;
 		for pair in record_pair:
 			for field in fields:
-				send_user[field]=pair[field]
+				send_user[field+' '+str(ct)]=pair[field]
+			ct+=1
 
 	send_user['positive']=yc
 	send_user['negative']=nc
